@@ -27,24 +27,26 @@ This is a simple yet modern to-do list application built with **FastAPI** and **
 ---
 
 ## 📁 Project Structure
+
+```
 ├── fastapi-app/
-│ ├── main.py
-│ ├── requirements.txt
-│ └── static/
-│ └── index.html
+│   ├── main.py
+│   ├── requirements.txt
+│   └── static/
+│       └── index.html
 ├── monitoring/
-│ └── prometheus.yml
+│   └── prometheus.yml
 ├── .gitignore
 ├── docker-compose.yml
 ├── LICENSE
 └── README.md
+```
 
 ---
 
 ## ⚙️ Getting Started
 
 ### Prerequisites
-
 - Docker & Docker Compose installed
 
 ### 1. Clone the repo
@@ -52,77 +54,87 @@ This is a simple yet modern to-do list application built with **FastAPI** and **
 ```bash
 git clone https://github.com/yourusername/observability-todo.git
 cd observability-todo
-2. Start the app
-bash
-Copy
-Edit
+```
+
+### 2. Start the app
+
+```bash
 docker-compose up --build
-FastAPI app: http://localhost:8000
+```
 
-Prometheus: http://localhost:9090
+**Access the services:**
+- FastAPI app: http://localhost:8000
+- Prometheus: http://localhost:9090
+- Grafana: http://localhost:3000
 
-Grafana: http://localhost:3000
+**Default Grafana credentials:**
+- User: `admin`
+- Pass: `admin`
 
-Default Grafana credentials:
-User: admin
-Pass: admin
+---
 
-📡 Prometheus Metrics
+## 📡 Prometheus Metrics
+
 Metrics are exposed at:
 
-bash
-Copy
-Edit
+```bash
 http://localhost:8000/metrics
-Prometheus scrapes this endpoint based on monitoring/prometheus.yml.
+```
 
-Metrics include:
+Prometheus scrapes this endpoint based on `monitoring/prometheus.yml`.
 
-http_requests_total
+**Metrics include:**
+- `http_requests_total`
+- `http_request_duration_seconds`
+- `tasks_created_total`
+- `tasks_completed_total`
 
-http_request_duration_seconds
+---
 
-tasks_created_total
+## 📊 Grafana Setup
 
-tasks_completed_total
+1. Login to Grafana: http://localhost:3000
+2. Add Prometheus as a Data Source: `http://prometheus:9090`
+3. Import a dashboard or create a new one
+4. Visualize your API metrics 🚀
 
-📊 Grafana Setup
-Login to Grafana: http://localhost:3000
+---
 
-Add Prometheus as a Data Source: http://prometheus:9090
+## ✅ Example API Routes
 
-Import a dashboard or create a new one
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/` | Serve frontend UI |
+| POST | `/add` | Add a new task |
+| GET | `/complete/{id}` | Mark task as complete |
+| GET | `/delete/{id}` | Delete a task |
+| GET | `/metrics` | Prometheus metrics |
 
-Visualize your API metrics 🚀
+---
 
-✅ Example API Routes
-Method	Endpoint	Description
-GET	/	Serve frontend UI
-POST	/add	Add a new task
-GET	/complete/{id}	Mark task as complete
-GET	/delete/{id}	Delete a task
-GET	/metrics	Prometheus metrics
+## 📦 Install Python Locally (optional)
 
-📦 Install Python Locally (optional)
 If you want to run it without Docker:
 
-bash
-Copy
-Edit
+```bash
 cd fastapi-app
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload
-🧠 Future Ideas
-PostgreSQL support
+```
 
-User authentication
+---
 
-Task due dates & reminders
+## 🧠 Future Ideas
 
-Container health checks
+- PostgreSQL support
+- User authentication
+- Task due dates & reminders
+- Container health checks
 
-🙌 Credits
+---
+
+## 🙌 Credits
+
 Built with ❤️ by Your Name
-
