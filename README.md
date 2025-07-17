@@ -137,4 +137,4 @@ uvicorn main:app --reload
 
 ## 🙌 Credits
 
-Built with ❤️ by Your Name
+Built by Swochchho
