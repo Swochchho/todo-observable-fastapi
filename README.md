@@ -27,8 +27,6 @@ This is a simple yet modern to-do list application built with **FastAPI** and **
 ---
 
 ## 📁 Project Structure
-
-.
 ├── fastapi-app/
 │ ├── main.py
 │ ├── requirements.txt
